@@ -1,0 +1,35 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <app-progresso>
+                </app-progresso>
+            </div>
+            <div class="col-sm-6">
+                <app-tentativas>
+                </app-tentativas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5>{{instructionText}}</h5>
+                <p>{{ frases[0].fraseEN }}</p>
+                <textarea 
+                    class="form-control mb-4" 
+                    rows="3"
+                    (input)="updateAnswerCache($event)">
+                </textarea>
+            </div>
+            
+        </div>
+        
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <button 
+                    type="button" 
+                    class="btn btn-primary"
+                    (click)="verifyAnswerButtonClick($event)">Primary</button>
+            </div>
+        </div>
+    </div>
+</div>
