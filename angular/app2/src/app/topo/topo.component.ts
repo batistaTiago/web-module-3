@@ -23,6 +23,10 @@ export class TopoComponent implements OnInit {
 
   ngOnInit() {
     let delay = 500
+    this.startObserver(delay)
+  }
+
+  private startObserver(delay: number = 0) {
     this.ofertasObs = this.subjectPesquisa.pipe(
       debounceTime(delay),
       distinctUntilChanged(),
@@ -45,7 +49,10 @@ export class TopoComponent implements OnInit {
   public searchBarTextFieldKeyUp(searchQuery: string) {
     console.log('keyup char: ' + searchQuery)
     this.subjectPesquisa.next(searchQuery)
+  }
 
+  public clearObserverOfertas() {
+    this.subjectPesquisa.next('')
   }
 
 }

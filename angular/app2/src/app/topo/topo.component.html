@@ -23,6 +23,8 @@
             placeholder="Digite sua pesquisa"
             #searchBarTextField
             (keyup)="searchBarTextFieldKeyUp(searchBarTextField.value)"
+            (click)="searchBarTextFieldKeyUp(searchBarTextField.value)"
+            (blur)="clearObserverOfertas()"
             />
             <div class="input-group-append">
               <button class="btn btn-info form-control">
@@ -41,7 +43,11 @@
 
         
         <ul id='search-results' class="list-group bt-vertical-scrolling-list bt-mh-25">
-          <a href='' class="list-group-item text-dark bt-hover-bg-gray" *ngFor="let oferta of ofertasObs | async">  
+          <a 
+          [routerLink]="['oferta/', oferta.id]" 
+          class="list-group-item text-dark bt-hover-bg-gray" 
+          (click)="clearObserverOfertas()"
+          *ngFor="let oferta of ofertasObs | async">  
             <div class="container">
               <div class="row" style="border-bottom: 1px solid #888;">
                 
