@@ -1,5 +1,7 @@
 <div class="d-flex justify-content-end">
-  <img [src]="emptyHeartImagePath" />
+  <!-- <img [src]="emptyHeartImagePath" />
   <img [src]="filledHeartImagePath" />
-  <img [src]="filledHeartImagePath" />
+  <img [src]="filledHeartImagePath" /> -->
+
+  <img *ngFor="let attempt of attempts" [src]="attempt.getImageURL()" />
 </div>

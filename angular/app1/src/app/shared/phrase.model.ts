@@ -1,4 +1,4 @@
-export class Frase {
+export class Phrase {
 
     public fraseEN: string = ""
     public frasePT: string = ""

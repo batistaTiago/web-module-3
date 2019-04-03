@@ -1,23 +1,24 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <app-progresso>
+            <div class="col-sm-6 bt-my-sm-5">
+                <app-progresso [percentComplete]="percentComplete">
                 </app-progresso>
             </div>
-            <div class="col-sm-6">
-                <app-tentativas>
+            <div class="col-sm-6 bt-my-sm-5">
+                <app-tentativas [attemptsRemaining]="attemptsRemaining">
                 </app-tentativas>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <h5>{{instructionText}}</h5>
-                <p>{{ frases[0].fraseEN }}</p>
+                <p>{{ roundPhrase.fraseEN }}</p>
                 <textarea 
                     class="form-control mb-4" 
                     rows="3"
-                    (input)="updateAnswerCache($event)">
+                    (input)="updateAnswerCache($event)"
+                    [value]="userAnswer">
                 </textarea>
             </div>
             
@@ -28,7 +29,7 @@
                 <button 
                     type="button" 
                     class="btn btn-primary"
-                    (click)="verifyAnswerButtonClick($event)">Primary</button>
+                    (click)="verifyAnswerButtonClick()">Primary</button>
             </div>
         </div>
     </div>

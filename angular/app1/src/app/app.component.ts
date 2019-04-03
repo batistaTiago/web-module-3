@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app1';
+
+  public gameIsRunning: boolean = true
+  public userVictory: boolean
+
+  public gameOver(victory: boolean) {
+    this.gameIsRunning = false
+    this.userVictory = victory
+  }
+
+  public restartGame() {
+    this.gameIsRunning = true
+    this.userVictory = undefined
+  }
+ 
 }

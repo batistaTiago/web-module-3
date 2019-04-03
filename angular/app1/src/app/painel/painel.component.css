@@ -2,3 +2,10 @@
     margin-top: 20px;
     padding: 30px 0px;
 }
+
+@media (max-width: 480px) { 
+    .bt-my-sm-5 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}

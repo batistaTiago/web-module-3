@@ -1,2 +1,21 @@
 <app-topo></app-topo>
-<app-painel></app-painel>
+<div *ngIf="gameIsRunning; else defeatScoreScreen">
+    <app-painel (gameOver)="gameOver($event)"></app-painel>
+</div>
+
+<ng-template #defeatScoreScreen>
+    <div class="container" style="margin-top: 150px">
+        <div class="row">
+            <div class="col">
+                    <h2 *ngIf="!userVictory" class="text-danger text-center">Fim de jogo, você perdeu.</h2>
+                    <h2 *ngIf="userVictory" class="text-success text-center">Fim de jogo, você venceu.</h2>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary mt-3" (click)="restartGame()">Jogar novamente</button>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+    
+    
+</ng-template>
