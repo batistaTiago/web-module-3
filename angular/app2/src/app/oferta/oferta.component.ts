@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
-import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 
 
 
@@ -32,10 +31,22 @@ export class OfertaComponent implements OnInit {
     this.ofertasService.getOfertaById(this.route.snapshot.params['id']).then(
       (oferta: Oferta) => {
         this.oferta = oferta
-        let selectedImageElement = <HTMLImageElement> document.getElementsByTagName('img')[1]
-        selectedImageElement.className += ' '
       }
     )
+
+    // this.route.params.subscribe(
+    //   (p: any) => {
+    //     console.log('instrução do observable')
+    //     console.log(p)
+    //   },
+    //   (error: any) => {
+    //     console.log('instrução de erro')
+    //     console.log(error)
+    //   },
+    //   () => {
+    //     console.log('instrução de conclusão')
+    //   }
+    // )
   }
 
 }

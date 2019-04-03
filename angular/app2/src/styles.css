@@ -37,6 +37,10 @@ h3 {
     border: 1px solid green;
 }
 
+.bt-purple-border {
+    border: 1px solid purple;
+}
+
 .bt-price-tag {
     color: black; 
     margin: 0;
@@ -47,7 +51,27 @@ h3 {
     border-bottom: 1px solid #777;
 }
 
+.bt-default-border {
+    border: 1px solid #777;
+}
+
+.bt-no-border {
+    border: none;
+}
+
+.bt-rounded-corners-5 {
+    border-radius: 5px;
+}
+
+.bt-border-left {
+    border-left: 1px solid #777;
+}
+
 .bt-border-box {
+    box-sizing: border-box;
+}
+
+.bt-box-sizing {
     box-sizing: border-box;
 }
 
@@ -55,8 +79,26 @@ h3 {
     border-radius: 10px;
 }
 
+.bt-hover-bg-gray:hover {
+    background-color: rgb(200,200,200);
+}
+
+.bt-hover-text-white {
+    color: white
+}
+
+.bt-vertical-scrolling-list {
+    overflow: hidden; 
+    overflow-y: scroll;
+}
+
+.bt-horizontal-scrolling-list {
+    overflow: scroll; 
+    overflow-y: hidden;
+}
+
 @media (min-width: 768px) {
-    img {
+    .navbar-brand img {
         max-height: 200px;
     }
  }

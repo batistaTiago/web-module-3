@@ -22,20 +22,11 @@ export class HomeComponent implements OnInit {
   
   ngOnInit() {
     this.ofertasService.getOfertas()
-    
       .then((ofertas: Oferta[]) => {
           // executa no resolve
-
           this.ofertas = ofertas
         }
       )
-
-      .catch((p: any) => {
-        // executa no reject
-          console.log(p)
-        }
-      )
-
   }
 }
   

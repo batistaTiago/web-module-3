@@ -27,7 +27,7 @@
           <div class="row align-items-center mt-4 bt-vertical-border py-2">
             <div class="col-4">
               <h5 class="bt-price-tag">
-                R$: {{ oferta.valor }}0
+                  {{ oferta.valor | currency:'BRL':'symbol-narrow' }}
               </h5>
             </div>
             <div class="col-8 col-md-4 offset-md-4 d-flex justify-content-end">

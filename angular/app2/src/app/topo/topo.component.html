@@ -1,23 +1,81 @@
 <div class="fixed-top bg-light">
   <nav class="navbar navbar-light bg-faded">
-    <div class="container">
-      <a routerLink='/' class="navbar-brand">
-        <img src="/assets/logo.png" />
-      </a>
-      <a a href="#"><img src="/assets/carrinho.png" /></a>
-    </div>
-  </nav>
+    <div class="container d-block">
+      <div class="row">
+        <div class="col-3 col-md-4 col-lg-3 bt-border-box">
+          <a routerLink='/' class="navbar-brand">
+            <img src="/assets/logo.png" class="" />
+          </a>
+        </div>
+        <div class="col-2 offset-7 justify-content-end align-items-center d-md-none d-flex bt-border-box">
+          <a a href="#"><img src="/assets/carrinho.png" /></a>
+        </div>
+        
+        
+        <div class="col-12 col-md-6 col-lg-7 mx-0 px-md-2 my-3 my-md-0 d-flex align-items-center bt-border-box">
+          <div class="input-group bt-rounded-corners-5">
+            <div class="input-group-prepend d-none d-lg-block">
+              <label class="input-group-text">Pesquisar</label>
+            </div>
+            <input 
+            class="form-control align-self-center" 
+            type='text' 
+            placeholder="Digite sua pesquisa"
+            #searchBarTextField
+            (keyup)="searchBarTextFieldKeyUp(searchBarTextField.value)"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-info form-control">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-2 col-lg-1 offset-lg-1 justify-content-end align-items-center d-none d-md-flex bt-border-box">
+          <a a href="#">
+            <img src="/assets/carrinho.png" />
+          </a>
+        </div>
 
+
+        
+        <ul id='search-results' class="list-group bt-vertical-scrolling-list bt-mh-25">
+          <a href='' class="list-group-item text-dark bt-hover-bg-gray" *ngFor="let oferta of ofertasObs | async">  
+            <div class="container">
+              <div class="row" style="border-bottom: 1px solid #888;">
+                
+                <div class="col-4 col-lg-2 d-flex align-items-center">
+                  <img [src]="oferta.imagens[0].url" class="w-100" />
+                </div>
+                
+                <div class="col-8 col-lg-10">
+                  <h5 class="text-center text-dark ml-md-3 lh-30 d-inline font-weight-bold" id="oferta-titulo">{{ oferta.titulo }}</h5>
+                  <h6 class="text-center d-block" id="oferta-descricao">{{ oferta.descricao_oferta }}</h6>
+                </div>
+                
+              </div>
+            </div>
+          </a>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+  
   <div class="menu">
-    <div class="container">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink='/restaurantes' routerLinkActive='active'>Restaurantes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink='/diversao' routerLinkActive='active'>Diversão</a>
-        </li>
-      </ul>
+    <div class="container bt-red-border">
+      <div class="row d-flex justify-content-around py-0 py-md-2 px-sm-3 bt-green-border">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link py-0 my-1 mx-md-5 active" routerLink='/restaurantes' routerLinkActive='active'>Restaurantes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-0 my-1 mx-md-5" routerLink='/diversao' routerLinkActive='active'>Diversão</a>
+          </li>
+        </ul>
+      </div>
+      
     </div>
   </div>
 </div>
