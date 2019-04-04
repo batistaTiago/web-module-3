@@ -25,7 +25,6 @@ export class TopoComponent implements OnInit {
     let delay = 500
     this.startObserver(delay)
   }
-
   private startObserver(delay: number = 0) {
     this.ofertasObs = this.subjectPesquisa.pipe(
       debounceTime(delay),
