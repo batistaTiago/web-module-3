@@ -1,28 +1,12 @@
-h5 {
-    color:#999
-}
-
-h4 {
-    color:#555
-}
-
-h3 {
-    color: #555
-}
-
-.card img {
-    height: 200px;
-}
-
-.secao {
-    margin-top: 30px;
-    margin-bottom: 30px
-}
-
-.preco {
-    color: #f60;
-    font-weight: bold;
-    font-size: 20px
+#bt-global-bg {
+	position: absolute;
+	width: 100%;
+    background: -moz-radial-gradient(circle, #7db9e8, #0057A6);
+    background: -webkit-radial-gradient(circle, #7db9e8, #0057A6);
+    background: -o-radial-gradient(circle, #7db9e8, #0057A6);
+    background: -ms-radial-gradient(circle, #7db9e8, #0057A6);
+    background: radial-gradient(circle, #7db9e8, #0057A6);
+	background-attachment: fixed;
 }
 
 .bt-red-border {
@@ -63,6 +47,10 @@ h3 {
     border-radius: 5px;
 }
 
+.bt-rounded-corners-15 {
+    border-radius: 15px;
+}
+
 .bt-border-left {
     border-left: 1px solid #777;
 }
@@ -97,8 +85,26 @@ h3 {
     overflow-y: hidden;
 }
 
+.bt-bg-transparent {
+    -webkit-background: transparent;
+    -o-background: transparent;
+    -ms-background: transparent;
+    -moz-background: transparent;
+    background: transparent;
+}
+
 @media (min-width: 768px) {
     .navbar-brand img {
         max-height: 200px;
     }
+ }
+
+ .bt-header-height {
+     margin-bottom: 220px
+ }
+
+ @media (min-width: 768px) {
+     .bt-header-height {
+        margin-bottom: 160px;
+     }
  }

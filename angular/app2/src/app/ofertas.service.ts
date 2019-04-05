@@ -1,5 +1,5 @@
 import { Oferta } from './shared/oferta.model';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_URL } from './app.constants';
 import { Observable } from 'rxjs'
@@ -20,6 +20,16 @@ export class OfertasService {
         (
             (resposta: Oferta[]) => {
                 return resposta
+            }
+        )
+    }
+
+    public getOfertasEmDestaque(): Promise<Oferta[]> {
+        return this.http.get(`${API_URL}/ofertas?destaque=${true}`)
+        .toPromise()
+        .then(
+            (ofertasEmDestaque: Oferta[]) => {
+                return ofertasEmDestaque
             }
         )
     }
