@@ -40,6 +40,12 @@ export class HomeComponent implements OnInit {
   }
 
   public debug() {
-    console.log(this.ofertasEmDestaque)
+    let element = <HTMLAnchorElement> document.getElementById('bt-white-carousel-control-prev')
+    // for (let att in element) {
+    //   if (element.hasOwnProperty(att)) {
+    //     console.log(att)
+    //   }
+    // }
+    console.log(element)
   }
 }

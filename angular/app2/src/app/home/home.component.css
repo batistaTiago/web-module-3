@@ -1,3 +1,44 @@
 .bt-bg-transparent {
     background-color: transparent;
 }
+
+
+/*.bt-white-carousel-control-prev, .bt-white-carousel-control-prev i {
+    color: #eee;
+}
+
+.bt-white-carousel-control-prev:visited, .bt-white-carousel-control-prev:visited i {
+    color: #eee;
+}
+
+.bt-white-carousel-control-prev:active, .bt-white-carousel-control-prev:active i {
+    color: #eee;
+}
+
+.bt-white-carousel-control-prev:checked, .bt-white-carousel-control-prev:checked i {
+    color: #eee;
+}
+
+.bt-white-carousel-control-prev:hover, .bt-white-carousel-control-prev:hover i {
+    color: #eee;
+}
+
+ .bt-white-carousel-control-prev:focus, .bt-white-carousel-control-prev:focus i {
+    color: #eee;
+} */
+
+.bt-white-carousel-control {
+    color: #eee;
+}
+
+.bt-white-carousel-control:hover {
+    color: #ccc;
+}
+
+.bt-white-carousel-control:visited {
+    color: #eee;
+}
+
+.bt-white-carousel-control:focus {
+    color: #eee;
+}
