@@ -21,3 +21,7 @@
 .bt-white-carousel-control:focus {
     color: #eee;
 }
+
+.carousel-item a {
+    text-decoration: none;
+}

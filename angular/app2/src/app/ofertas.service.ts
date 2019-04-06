@@ -73,7 +73,6 @@ export class OfertasService {
         .then
         (
             (resposta: any) => {
-                console.log(resposta)
                 return resposta[0].descricao
             }
         )

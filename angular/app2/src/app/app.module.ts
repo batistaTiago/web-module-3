@@ -3,6 +3,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from "@angular/common";
 import localePt from "@angular/common/locales/pt";
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
@@ -35,7 +36,8 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    FormsModule
   ],
   providers: [
     { provide:LOCALE_ID, useValue: 'pt' }

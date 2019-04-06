@@ -1,5 +1,4 @@
-<div class="container" style="margin-bottom: 50px">
-  
+<div class="container">
   <div class="mt-3 mb-4 text-light">
     <hr>
     <h3 class="text-center">Destaques do dia!</h3>
@@ -17,13 +16,14 @@
           <div class="carousel-item" *ngFor="let destaque of ofertasEmDestaque">
             <div class="container">
               <div class="row">
-                <div class="col-12 d-sm-block offset-md-1 col-md-5 offset-lg-2 col-lg-4">
-                  <img [src]="destaque.imagens[0].url" class="img-fluid" />
-                </div>
-                <div class="col-12 col-sm-6 col-md-5 col-lg-4 text-light">
-                  <h3 class="text-center"> {{ destaque.titulo }} </h3>
-                  <h4 class="text-center d-none d-md-block"> {{ destaque.descricao_oferta }} </h4>
-                </div>
+                <a class="col-12 d-sm-block offset-md-1 col-md-5 offset-lg-2 col-lg-4" [routerLink]="['/oferta', destaque.id]">
+                    <img [src]="destaque.imagens[0].url" class="img-fluid bt" />
+                  </a>
+                <a [routerLink]="['/oferta', destaque.id]" class="col-12 col-sm-6 col-md-5 col-lg-4 text-light">
+                    <h3 class="text-center"> {{ destaque.titulo }} </h3>
+                    <h4 class="text-center d-none d-md-block"> {{ destaque.descricao_oferta }} </h4>
+                    <h3 class="text-center">{{ destaque.valor | currency:'BRL':'symbol' }}</h3>
+                  </a>
               </div>
             </div>
           </div>

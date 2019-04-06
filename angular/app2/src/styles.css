@@ -1,12 +1,12 @@
 #bt-global-bg {
-	position: absolute;
-	width: 100%;
+    position: absolute;
+    width: 100%;
     background: -moz-radial-gradient(circle, #7db9e8, #0057A6);
     background: -webkit-radial-gradient(circle, #7db9e8, #0057A6);
     background: -o-radial-gradient(circle, #7db9e8, #0057A6);
     background: -ms-radial-gradient(circle, #7db9e8, #0057A6);
     background: radial-gradient(circle, #7db9e8, #0057A6);
-	background-attachment: fixed;
+    background-attachment: fixed;
 }
 
 .bt-bg-transparent {
@@ -19,19 +19,19 @@
 
 
 .bt-red-border {
-    border: 1px solid red;
+    border: 3px solid red;
 }
 
 .bt-blue-border {
-    border: 1px solid blue;
+    border: 3px solid blue;
 }
 
 .bt-green-border {
-    border: 1px solid green;
+    border: 3px solid green;
 }
 
 .bt-purple-border {
-    border: 1px solid purple;
+    border: 3px solid purple;
 }
 
 .bt-price-tag {
@@ -102,38 +102,48 @@
     background: transparent;
 }
 
-/* 
-.bt-no-arrows-number-input {
-    -webkit-appearance: none;
-    margin: 0;
-    -moz-appearance: textfield;
-} */
+.bt-scalable-text {
+    font-size: 0.9em;
+}
 
 input#cep-input::-webkit-outer-spin-button, input#cep-input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
- 
+
 input#cep-input[type="number"] {
     -moz-appearance: textfield;
 }
 
-@media (min-width: 768px) {
-    .navbar-brand img {
-        max-height: 200px;
+.bt-header-height {
+    margin-bottom: 220px
+}
+
+.navbar-brand img {
+    max-height: 200px;
+}
+
+@media (min-width: 576px) {
+    
+    .bt-scalable-text {
+        font-size: 1.1em
     }
- }
+} 
 
- .bt-header-height {
-     margin-bottom: 220px
- }
+@media (min-width: 768px) {
+    
+    .menu .nav-item a {
+        font-size: 1.15em
+    }
+    
+    .bt-scalable-text {
+        font-size: 1.25em
+    }
+}
 
- @media (min-width: 768px) {
-     .bt-header-height {
-        margin-bottom: 175px;
-     }
+@media (min-width: 992px) {
 
-     .menu .nav-item a {
-         font-size: 1.15em
-     }
- }
+    .bt-scalable-text {
+        font-size: 1.4em
+    }
+}
