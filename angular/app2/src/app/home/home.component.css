@@ -1,3 +1,11 @@
+.bt-bg-transparent {
+    -webkit-background: transparent;
+    -o-background: transparent;
+    -ms-background: transparent;
+    -moz-background: transparent;
+    background: transparent;
+}
+
 .bt-white-carousel-control {
     color: #eee;
 }

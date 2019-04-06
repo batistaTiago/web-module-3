@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { CepService } from '../cep.service';
 import { Endereco } from '../shared/endereco.model';
+import { OrdemCompraService } from '../ordem-compra.service';
+
 
 
 import { Observable, Subject, of } from 'rxjs'
 import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators'
+import { Pedido } from '../shared/pedido.model';
+
 
 
 @Component({
   selector: 'app-ordem-compra',
   templateUrl: './ordem-compra.component.html',
   styleUrls: ['./ordem-compra.component.css'],
-  providers: [CepService]
+  providers: [CepService, OrdemCompraService]
 })
 export class OrdemCompraComponent implements OnInit {
   
+  public idPedidoCompra: number
+
   public cep: string = ''
   public cidade: string = ''
   public bairro: string = ''
@@ -42,36 +48,18 @@ export class OrdemCompraComponent implements OnInit {
   
   private formasPagamento: string[] = ['dinheiro', 'credito', 'debito']
   
-  constructor(private cepService: CepService) { }
-  
-  // ngOnInit() {
-  //   console.log('inicializando cepObserver')
-  //   this.cepObserver = this.subjectCep.pipe(
-  //     debounceTime(500),
-  //     distinctUntilChanged(),
-  //     switchMap(
-  //       (cep: string) => {
-  //         if (cep.length != 8) {
-  //           console.log('cep incorreto')
-  //           return of<Endereco>(); 
-  //         }
-  //         console.log('disparando cep busca:' + cep)
-  //         return this.cepService.getInfo(cep)
-  //       }),
-  //     catchError( (erro: any) => {
-  //       console.log(erro)
-  //       return of<Endereco>(); 
-  //     })
-  //   )
-  //   console.log(this.cepObserver)
-  // }
+  constructor(private cepService: CepService, private ordemCompraService: OrdemCompraService) { }
+
   
   ngOnInit() {
+
+  }
+
+  private startCepObserver() {
     this.cepObserver = this.subjectCep.pipe(
       debounceTime(250),
       distinctUntilChanged(),
       switchMap((value: string) => {
-        console.log('valor recebido: ' + value)
         if (value != '') {
           return this.cepService.getInfo(value)
         } else {
@@ -85,10 +73,11 @@ export class OrdemCompraComponent implements OnInit {
         return of<Endereco>(); 
       })
     )
-      
+  }
+
+  private subscribeObserver() {
     this.cepObserver.subscribe(
       (endereco: Endereco) => {
-        console.log(endereco)
         if (!(<any>endereco).erro) {
           this.cepValido = true
           this.cidade = endereco.localidade
@@ -97,7 +86,19 @@ export class OrdemCompraComponent implements OnInit {
           this.endereco = endereco.logradouro
         }
       }
-      )
+    )
+  }
+
+  private getEndereco() {
+    return new Endereco(
+                this.cep,
+                this.endereco,
+                this.cidade,
+                this.bairro,
+                this.uf,
+                this.numero,
+                this.complemento
+              )
   }
   
   private limparInformacoesEndereco() {
@@ -110,19 +111,16 @@ export class OrdemCompraComponent implements OnInit {
   
   public atualizarCep(cep: string) {
     this.cepPrimitivo = false
+    if (!this.cepObserver) {
+      this.startCepObserver()
+      this.subscribeObserver()
+    }
     if (cep.length == 8) {
       this.cep = cep
       this.subjectCep.next(cep)
     } else {
       this.subjectCep.next('')
     }
-  }
-  
-  
-  public atualizaEndereco(endereco: string) {
-    this.endereco = endereco
-    this.enderecoValido = this.endereco.length > 3 ? true : false
-    this.enderecoPrimitivo = false
   }
   
   public atualizaNumero(numero: string) {
@@ -153,5 +151,18 @@ export class OrdemCompraComponent implements OnInit {
     } else {
       return 'disabled'
     }
+  }
+
+  public confirmarCompra() {
+    let endereco = this.getEndereco()
+    let pedido = new Pedido(endereco, this.formaPagamento)
+    this.ordemCompraService
+      .efetivarCompra(pedido)
+      .subscribe(
+        (idNovoPedido: number) => {
+          this.idPedidoCompra = idNovoPedido
+        }
+      )
+
   }
 }
