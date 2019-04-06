@@ -1,20 +1,20 @@
 <div class="container">
   <div class="ordem-compra">
-    <form novalidate>
-    
+    <form>
+      
       <h5>Sua Compra</h5>
       <hr />
-
-      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
-        <div class="form-group col-sm-1">
+      
+      <div class="form-row">
+        <div class="form-group col-md-1">
           <img src="/assets/ofertas/1/img1.jpg" class="img-fluid">
         </div>
-        <div class="form-group col-sm-6">
+        <div class="form-group col-md-6">
           Super Burger
           <br />
           Rodízio de Mini-hambúrger com opção de entrada.
         </div>
-
+        
         <div>
           <div class="row">
             <div class="col">
@@ -24,22 +24,22 @@
             </div>
           </div>
         </div>
-
-        <div class="form-group col-sm-3 d-flex justify-content-end">
+        
+        <div class="form-group col-md-3 d-flex justify-content-end">
           29.90
         </div>
       </div>
       
-      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
-        <div class="form-group col-sm-1">
+      <div class="form-row">
+        <div class="form-group col-md-1">
           <img src="/assets/ofertas/4/img1.jpg" class="img-fluid">
         </div>
-        <div class="form-group col-sm-6">
+        <div class="form-group col-md-6">
           Estância das águas
           <br />
           Diversão garantida com piscinas, trilhas e muito mais.
         </div>
-
+        
         <div>
           <div class="row">
             <div class="col">
@@ -49,8 +49,8 @@
             </div>
           </div>
         </div>
-
-        <div class="form-group col-sm-3 d-flex justify-content-end">
+        
+        <div class="form-group col-md-3 d-flex justify-content-end">
           31.90
         </div>
       </div>
@@ -61,31 +61,42 @@
         </div>
       </div>
       <br />
-
-
+      
+      
       <h5>Dados de entrega</h5>
       <hr />
-
+      
       <div class="form-row">
-
+        
         <div class="form-group col-md-6">
           <input 
-            type="text" 
-            class="form-control {{ enderecoValido ? 'is-valid' : 'is-invalid' }}" 
-            placeholder="Endereço" 
-            autocomplete="off" 
-            minlength="5" 
-            required
-            [value]="endereco"
-            #inputEndereco
-            (input)="atualizaEndereco(inputEndereco.value)">
-          <div class="invalid-feedback">Endereço inválido</div>
-        </div>
-
-        <div class="form-group col-md-2">
-          <input 
+          type="text" 
+          class="form-control {{ enderecoPrimitivo ? '' : (enderecoValido ? 'is-valid' : 'is-invalid') }}" 
+          placeholder="Endereço" 
+          autocomplete="off" 
+          minlength="5" 
+          required
+          [value]="endereco"
+          #inputEndereco
+          (input)="atualizaEndereco(inputEndereco.value)">
+          <!-- <div class="valid-feedback">Endereço válido</div>
+            <div class="invalid-feedback">Endereço inválido</div> -->
+            
+            
+            <div *ngIf="enderecoPrimitivo == false">
+              <div *ngIf="enderecoValido; else msgEnderecoInvalido">
+                <small class="form-text text-success">Endereço válido</small>
+              </div>
+              <ng-template #msgEnderecoInvalido>
+                <small class="form-text text-danger">Endereço inválido</small>
+              </ng-template>
+            </div>
+          </div>
+          
+          <div class="form-group col-md-2">
+            <input 
             type="number" 
-            class="form-control {{ numeroValido ? 'is-valid' : 'is-invalid' }}" 
+            class="form-control {{ numeroPrimitivo ? '' : (numeroValido ? 'is-valid' : 'is-invalid') }}" 
             placeholder="Número" 
             autocomplete="off" 
             minlength="1" 
@@ -93,11 +104,20 @@
             [value]="numero"
             #inputNumero
             (input)="atualizaNumero(inputNumero.value)">
-          <small class="form-text text-muted">Ok</small>
-        </div>
-
-        <div class="form-group col-md-4">
-          <input 
+            
+            <div *ngIf="numeroPrimitivo == false">
+              <div *ngIf="numeroValido; else msgNumeroInvalido">
+                <small class="form-text text-success">Número válido</small>
+              </div>
+              <ng-template #msgNumeroInvalido>
+                <small class="form-text text-danger">Número inválido</small>
+              </ng-template>
+            </div>
+            
+          </div>
+          
+          <div class="form-group col-md-4">
+            <input
             type="text" 
             class="form-control {{ complementoValido ? 'is-valid' : '' }}" 
             placeholder="Complemento" 
@@ -105,20 +125,22 @@
             [value]="complemento"
             #inputComplemento
             (input)="atualizaComplemento(inputComplemento.value)"
-          >
-        </div>
-
-      </div>
-      <br />
-
-      <h5>Dados de pagamento</h5>
-      <hr />
-
-      <div class="form-row">
+            aria-describedby="complementoTooltip"
+            >
+            <small id="complementoTooltip" class="form-text text-dark">Pode ser vazio</small>
+          </div>
           
-        <div class="form-group">
-          <select 
-            class="form-control {{ formaPagamento ? 'is-valid' : 'is-invalid' }}"
+        </div>
+        <br />
+        
+        <h5>Dados de pagamento</h5>
+        <hr />
+        
+        <div class="form-row">
+          
+          <div class="form-group">
+            <select 
+            class="custom-select {{ formaPagamentoPrimitivo ? '' : (formaPagamentoValido ? 'is-valid' : 'is-invalid') }}"
             #selectFormaPagamento
             (change)="atualizaFormaPagamento(selectFormaPagamento.value)">
             <option value="">Selecione uma opção</option>
@@ -126,11 +148,18 @@
             <option value='debito' selected='{{ formaPagamento == "debito" ? selected : "" }}'>Débito</option>
             <option value='credito' selected='{{ formaPagamento == "credito" ? selected : "" }}'>Crédito</option>
           </select>
-
-          <div class="invalid-feedback">Selecione uma forma de pagamento</div>
+          
+          <div *ngIf="formaPagamentoPrimitivo == false">
+            <div *ngIf="formaPagamentoValido; else msgFormaPagamentoInvalido">
+            </div>
+            <ng-template #msgFormaPagamentoInvalido>
+              <small class="form-text text-danger">Selecione uma forma de pagamento</small>
+            </ng-template>
+          </div>
+          
         </div>
       </div>
-
+      
       <hr />
       <button type="submit" class="btn btn-primary btn-lg">Cofirmar compra</button>
     </form>

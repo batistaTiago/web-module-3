@@ -9,6 +9,15 @@
 	background-attachment: fixed;
 }
 
+.bt-bg-transparent {
+    background-color: transparent;
+}
+
+.bt-bg-gray {
+    background-color: #000;
+}
+
+
 .bt-red-border {
     border: 1px solid red;
 }
@@ -105,6 +114,10 @@
 
  @media (min-width: 768px) {
      .bt-header-height {
-        margin-bottom: 160px;
+        margin-bottom: 175px;
+     }
+
+     .menu .nav-item a {
+         font-size: 1.15em
      }
  }

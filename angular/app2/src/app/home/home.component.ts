@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
 
@@ -10,7 +10,7 @@ import { Oferta } from '../shared/oferta.model';
   // (como singleton)
   providers: [OfertasService] 
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewChecked {
   
   private ofertasService: OfertasService
   
@@ -29,23 +29,23 @@ export class HomeComponent implements OnInit {
     this.ofertasService.getOfertas()
       .then(
         (ofertas: Oferta[]) => {
+          let ofertasEmDestaque: Oferta[] = []
           for (let oferta of ofertas) {
             if (oferta.destaque) {
-              this.ofertasEmDestaque.push(oferta)
+              ofertasEmDestaque.push(oferta)
             }
             this.ofertas.push(oferta)
           }
+          this.ofertasEmDestaque = ofertasEmDestaque
         }
       )
   }
 
+  ngAfterViewChecked() {
+    $('.carousel-item:first').addClass('active')
+  }
+
   public debug() {
-    let element = <HTMLAnchorElement> document.getElementById('bt-white-carousel-control-prev')
-    // for (let att in element) {
-    //   if (element.hasOwnProperty(att)) {
-    //     console.log(att)
-    //   }
-    // }
-    console.log(element)
+    console.log(this.ofertasEmDestaque.length)
   }
 }
