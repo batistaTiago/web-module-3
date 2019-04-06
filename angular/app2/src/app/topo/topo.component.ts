@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../ofertas.service';
-import { Observable, Subject, of } from 'rxjs'
 import { Oferta } from '../shared/oferta.model';
 
+import { Observable, Subject, of } from 'rxjs'
 import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators'
 
 @Component({
@@ -22,12 +22,8 @@ export class TopoComponent implements OnInit {
    }
 
   ngOnInit() {
-    let delay = 500
-    this.startObserver(delay)
-  }
-  private startObserver(delay: number = 0) {
     this.ofertasObs = this.subjectPesquisa.pipe(
-      debounceTime(delay),
+      debounceTime(500),
       distinctUntilChanged(),
       switchMap(
         (query: string) => {
@@ -35,7 +31,7 @@ export class TopoComponent implements OnInit {
           if (query == '') {
             return of<Oferta[]>([]); 
           }
-          return this.ofertasService.pesquisarOfertas(query)
+          return this.ofertasService.pesquisarOfertas(parsedQuery)
         }
       ),
       catchError( (erro: any) => {
@@ -48,6 +44,7 @@ export class TopoComponent implements OnInit {
   public searchBarTextFieldKeyUp(searchQuery: string) {
     console.log('keyup char: ' + searchQuery)
     this.subjectPesquisa.next(searchQuery)
+    console.log(this.subjectPesquisa)
   }
 
   public clearObserverOfertas() {

@@ -101,6 +101,21 @@
     -moz-background: transparent;
     background: transparent;
 }
+/* 
+.bt-no-arrows-number-input {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+} */
+
+input#cep-input::-webkit-outer-spin-button, input#cep-input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+input#cep-input[type="number"] {
+    -moz-appearance: textfield;
+}
 
 @media (min-width: 768px) {
     .navbar-brand img {
