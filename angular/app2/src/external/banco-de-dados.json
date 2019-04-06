@@ -462,32 +462,6 @@
       },
       "formaPagamento": "dinheiro",
       "id": 1
-    },
-    {
-      "endereco": {
-        "cep": "59062570",
-        "logradouro": "Rua Jornalista Francisco Sinedino",
-        "localidade": "Natal",
-        "bairro": "Lagoa Nova",
-        "uf": "RN",
-        "numero": "1",
-        "complemento": ""
-      },
-      "formaPagamento": "dinheiro",
-      "id": 2
-    },
-    {
-      "endereco": {
-        "cep": "59062570",
-        "logradouro": "Rua Jornalista Francisco Sinedino",
-        "localidade": "Natal",
-        "bairro": "Lagoa Nova",
-        "uf": "RN",
-        "numero": "1",
-        "complemento": ""
-      },
-      "formaPagamento": "dinheiro",
-      "id": 3
     }
   ]
 }

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { API_URL } from './app.constants';
 import { Observable } from 'rxjs'
 
-import { map, retry, of } from 'rxjs/operators'
+import { map, retry } from 'rxjs/operators'
 import { Pedido } from './shared/pedido.model';
 
 
