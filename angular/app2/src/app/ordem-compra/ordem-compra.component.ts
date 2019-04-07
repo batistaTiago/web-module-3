@@ -156,23 +156,45 @@ export class OrdemCompraComponent implements OnInit {
   }
   
   public formValido() {
-    if (this.cepValido && this.numeroValido && this.formaPagamentoValido) {
+    if (this.cepValido 
+        && this.numeroValido 
+        && this.formaPagamentoValido 
+        && this.carrinhoService.getItems().length) {
       return ''
     } else {
       return 'disabled'
     }
   }
 
-  public confirmarCompra() {
-    let endereco = this.getEndereco()
-    let pedido = new Pedido(endereco, this.formaPagamento)
-    this.ordemCompraService
-      .efetivarCompra(pedido)
-      .subscribe(
-        (idNovoPedido: number) => {
-          this.idPedidoCompra = idNovoPedido
-        }
-      )
+  public adicionarClickado(item: ItemCarrinho) {
+    this.carrinhoService.alterarQuantidade(item, true)
+  }
 
+  public removerClickado(item: ItemCarrinho) {
+    this.carrinhoService.alterarQuantidade(item, false)
+  }
+
+  public confirmarCompra() {
+    if (this.carrinhoService.getItems().length) {
+      let endereco = this.getEndereco()
+      let pedido = new Pedido(
+        endereco, 
+        this.formaPagamento,
+        this.carrinhoService.getItems())
+      this.ordemCompraService
+        .efetivarCompra(pedido)
+        .subscribe(
+          (idNovoPedido: number) => {
+            this.idPedidoCompra = idNovoPedido
+          }
+        )
+    } else {
+      alert('nao eh possivel realizar um pedido sem itens')
+    }
+  }
+
+
+  public debug() {
+    console.log(this.carrinhoService.getItems().length == 0)
   }
 }

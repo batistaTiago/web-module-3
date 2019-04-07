@@ -1,4 +1,5 @@
 import { Endereco } from "./endereco.model";
+import { ItemCarrinho } from "./item-carrinho.model";
 
 export class Pedido {
 
@@ -6,6 +7,7 @@ export class Pedido {
 
     constructor(
         public endereco: Endereco,
-        public formaPagamento: string
+        public formaPagamento: string,
+        public itens: ItemCarrinho[]
     ) { }
 }

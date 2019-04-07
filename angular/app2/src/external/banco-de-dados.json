@@ -457,10 +457,42 @@
         "localidade": "Natal",
         "bairro": "Lagoa Nova",
         "uf": "RN",
-        "numero": "1",
-        "complemento": ""
+        "numero": "420",
+        "complemento": "casa 1620"
       },
       "formaPagamento": "dinheiro",
+      "itens": [
+        {
+          "id": 1,
+          "imagem": {
+            "url": "/assets/ofertas/1/img1.jpg"
+          },
+          "titulo": "Super Burger",
+          "descricao": "Rodízio de Mini-hambúrger com opção de entrada.",
+          "valor": 29.9,
+          "quantidade": 2
+        },
+        {
+          "id": 4,
+          "imagem": {
+            "url": "/assets/ofertas/4/img1.jpg"
+          },
+          "titulo": "Estância das águas",
+          "descricao": "Diversão garantida com piscinas, trilhas e muito mais.",
+          "valor": 31.9,
+          "quantidade": 1
+        },
+        {
+          "id": 6,
+          "imagem": {
+            "url": "/assets/ofertas/6/img1.jpg"
+          },
+          "titulo": "Academia de tiro",
+          "descricao": "Sessão de tiro dinâmico com Instrutor, Estande, Alvo e Equipamentos.",
+          "valor": 89.9,
+          "quantidade": 1
+        }
+      ],
       "id": 1
     }
   ]

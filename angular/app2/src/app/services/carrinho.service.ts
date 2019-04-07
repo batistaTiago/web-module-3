@@ -28,4 +28,36 @@ export class CarrinhoService {
 
         this.itens.push(itemCarrinho)
     }
+
+    public alterarQuantidade(itemAlvo: ItemCarrinho, add: boolean) {
+        for (let item of this.itens) {
+            if (item.id == itemAlvo.id) {
+                if (add) {
+                    item.quantidade += 1
+                } else {
+                    if (item.quantidade > 0) {
+                        item.quantidade -= 1
+                    } else {
+
+                        // TODO: mostrar alerta para perguntar se 
+                        //       o usuario realmente quer remover o item do carrinho
+                        
+                        let index = this.itens.indexOf(itemAlvo)
+                        if (index != -1 && confirm("Deseja realmente remover este item do carrinho?")) {
+                            this.itens.splice(index, 1)
+                        }
+                    }
+                }
+                return
+            }
+        }
+    }
+
+    public getValorTotal(): number {
+        let total: number = 0
+        for (let item of this.itens) {
+            total = item.valor * item.quantidade
+        }
+        return total
+    }
 }
