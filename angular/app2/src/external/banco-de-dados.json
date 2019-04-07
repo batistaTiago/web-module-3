@@ -494,6 +494,56 @@
         }
       ],
       "id": 1
+    },
+    {
+      "endereco": {
+        "cep": "59062570",
+        "logradouro": "Rua Jornalista Francisco Sinedino",
+        "localidade": "Natal",
+        "bairro": "Lagoa Nova",
+        "uf": "RN",
+        "numero": "1",
+        "complemento": ""
+      },
+      "formaPagamento": "dinheiro",
+      "itens": [
+        {
+          "id": 3,
+          "imagem": {
+            "url": "/assets/ofertas/3/img1.jpg"
+          },
+          "titulo": "Pizzas Grandes",
+          "descricao": "Pizza Grande, Mussarela, Marguerita ou outras!",
+          "valor": 21.9,
+          "quantidade": 1
+        }
+      ],
+      "id": 2
+    },
+    {
+      "endereco": {
+        "cep": "59062570",
+        "logradouro": "Rua Jornalista Francisco Sinedino",
+        "localidade": "Natal",
+        "bairro": "Lagoa Nova",
+        "uf": "RN",
+        "numero": "1",
+        "complemento": ""
+      },
+      "formaPagamento": "dinheiro",
+      "itens": [
+        {
+          "id": 2,
+          "imagem": {
+            "url": "/assets/ofertas/2/img1.jpg"
+          },
+          "titulo": "Cozinha Mexicana",
+          "descricao": "Almoço ou Jantar com Rodízio Mexicano delicioso.",
+          "valor": 32.9,
+          "quantidade": 1
+        }
+      ],
+      "id": 3
     }
   ]
 }

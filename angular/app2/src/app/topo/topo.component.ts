@@ -14,7 +14,7 @@ import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/
 export class TopoComponent implements OnInit {
 
   private ofertasService: OfertasService;
-  private ofertasObs: Observable<Oferta[]>
+  public ofertasObs: Observable<Oferta[]>
   private subjectPesquisa: Subject<string> = new Subject<string>()
 
   constructor(service: OfertasService) {

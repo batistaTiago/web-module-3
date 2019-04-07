@@ -55,7 +55,7 @@ export class OrdemCompraComponent implements OnInit {
   constructor(
     private cepService: CepService, 
     private ordemCompraService: OrdemCompraService,
-    private carrinhoService: CarrinhoService) { 
+    public carrinhoService: CarrinhoService) { 
 
     }
 
@@ -180,12 +180,16 @@ export class OrdemCompraComponent implements OnInit {
       let pedido = new Pedido(
         endereco, 
         this.formaPagamento,
-        this.carrinhoService.getItems())
+        this.carrinhoService.getItems()
+      )
       this.ordemCompraService
         .efetivarCompra(pedido)
         .subscribe(
           (idNovoPedido: number) => {
+
             this.idPedidoCompra = idNovoPedido
+
+            this.carrinhoService.limparItens()
           }
         )
     } else {

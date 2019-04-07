@@ -9,6 +9,10 @@ export class CarrinhoService {
         return this.itens
     }
 
+    public limparItens() {
+        this.itens = []
+    }
+
     public incluirItem(oferta: Oferta) {
         let itemCarrinho: ItemCarrinho = new ItemCarrinho(
             oferta.id,
