@@ -8,5 +8,4 @@ export class Oferta {
     public valor: number
     public destaque: boolean
     public imagens: Array<object>
-    public emPromocao: boolean
 }

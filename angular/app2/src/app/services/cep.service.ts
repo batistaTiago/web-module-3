@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'
 
 import { map, retry } from 'rxjs/operators'
-import { Endereco } from './shared/endereco.model';
+import { Endereco } from '../shared/endereco.model';
 
 @Injectable()
 export class CepService {

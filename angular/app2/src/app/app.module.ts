@@ -18,6 +18,7 @@ import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
+import { CarrinhoService } from './services/carrinho.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
     FormsModule
   ],
   providers: [
-    { provide:LOCALE_ID, useValue: 'pt' }
+    { provide:LOCALE_ID, useValue: 'pt' },
+    CarrinhoService
   ],
   bootstrap: [AppComponent]
 })

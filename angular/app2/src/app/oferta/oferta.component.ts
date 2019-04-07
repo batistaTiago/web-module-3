@@ -1,8 +1,8 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
-
+import { OfertasService } from '../services/ofertas.service';
+import { CarrinhoService } from '../services/carrinho.service';
 
 
 @Component({
@@ -11,17 +11,24 @@ import { Oferta } from '../shared/oferta.model';
   styleUrls: ['./oferta.component.css'],
   providers: [OfertasService]
 })
-export class OfertaComponent implements OnInit, AfterViewChecked {
+export class OfertaComponent implements OnInit {
   
   private route: ActivatedRoute
+
   public indexImagemSelecionada: number = 0
+
   private ofertasService: OfertasService
+  private carrinhoService: CarrinhoService
   
   public oferta: Oferta = new Oferta()
   
-  constructor(route: ActivatedRoute, ofertasService: OfertasService) { 
+  constructor(
+      route: ActivatedRoute, 
+      ofertasService: OfertasService,
+      carrinhoService: CarrinhoService) { 
     this.route = route
-    this. ofertasService = ofertasService
+    this.ofertasService = ofertasService
+    this.carrinhoService = carrinhoService
   }
   
   public imageClicked(event: Event) {
@@ -43,13 +50,18 @@ export class OfertaComponent implements OnInit, AfterViewChecked {
       }
     }
     
-    //  let elementoClicado = (<HTMLElement>event.target)
-    //  elementoClicado.classList.add('bt-red-border')
-    
+    // console.log('Itens do carrinho: ' + this.carrinhoService.getItems())
+    console.log(`carrinho de compras (instancia da oferta ${this.oferta.id}): ${this.carrinhoService.getItems()}`)
+  }
+
+  public adicionarAoCarrinho() {
+    this.carrinhoService.incluirItem(this.oferta)
   }
   
   ngOnInit() {
     
+
+
     this.route.params.subscribe(
       (p: Params) => {
         this.ofertasService.getOfertaById(p.id).then(
@@ -64,10 +76,6 @@ export class OfertaComponent implements OnInit, AfterViewChecked {
           }
           )
         })
-      }
-      
-      ngAfterViewChecked() {
-
       }
     }
     

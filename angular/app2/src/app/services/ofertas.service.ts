@@ -1,7 +1,7 @@
-import { Oferta } from './shared/oferta.model';
+import { Oferta } from '../shared/oferta.model'
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_URL } from './app.constants';
+import { API_URL } from '../app.constants';
 import { Observable } from 'rxjs'
 
 import { map, retry } from 'rxjs/operators'

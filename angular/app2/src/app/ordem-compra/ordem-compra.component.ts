@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { CepService } from '../cep.service';
+
 import { Endereco } from '../shared/endereco.model';
-import { OrdemCompraService } from '../ordem-compra.service';
+import { Pedido } from '../shared/pedido.model';
+import { ItemCarrinho } from '../shared/item-carrinho.model';
 
-
+import { OrdemCompraService } from '../services/ordem-compra.service';
+import { CarrinhoService } from '../services/carrinho.service';
+import { CepService } from '../services/cep.service';
 
 import { Observable, Subject, of } from 'rxjs'
 import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators'
-import { Pedido } from '../shared/pedido.model';
 
 
 
@@ -18,8 +20,10 @@ import { Pedido } from '../shared/pedido.model';
   providers: [CepService, OrdemCompraService]
 })
 export class OrdemCompraComponent implements OnInit {
-  
+
   public idPedidoCompra: number
+
+  public itensCarrinho: ItemCarrinho[] = []
 
   public cep: string = ''
   public cidade: string = ''
@@ -48,11 +52,17 @@ export class OrdemCompraComponent implements OnInit {
   
   private formasPagamento: string[] = ['dinheiro', 'credito', 'debito']
   
-  constructor(private cepService: CepService, private ordemCompraService: OrdemCompraService) { }
+  constructor(
+    private cepService: CepService, 
+    private ordemCompraService: OrdemCompraService,
+    private carrinhoService: CarrinhoService) { 
+
+    }
 
   
   ngOnInit() {
-
+    this.itensCarrinho = this.carrinhoService.getItems()
+    console.log(this.itensCarrinho)
   }
 
   private startCepObserver() {

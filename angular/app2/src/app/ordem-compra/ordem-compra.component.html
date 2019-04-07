@@ -1,212 +1,193 @@
 <div class="container mb-5">
   <div *ngIf="idPedidoCompra === undefined">
-      <form novalidate>
+    <form novalidate>
+      
+      <h5>Sua Compra</h5>
+      <hr />
+      
+      <div class="form-row mb-md-5" *ngFor="let item of itensCarrinho">
+
+        <div class="row d-flex align-items-center">
+
+          <div class="col-md-2">
+              <img [src]="item.imagem.url" class="img-fluid">
+          </div>
+
+          <div class="col-md-4">
+            <h3> {{ item.titulo }} </h3>
+            <h4> {{ item.descricao }} </h4>
+          </div>
+
+          <div class="col-md-2">
+                <button type="button" class="btn btn-link">-</button>
+                {{ item.quantidade }}
+                <button type="button" class="btn btn-link">+</button>
+          </div>
+
+          <div class="col-md-2">
+              {{ item.valor | currency:'BRL':'symbol-narrow' }}
+          </div>
+
+          <div class="col-md-2">
+              {{ item.valor * item.quantidade | currency:'BRL':'symbol-narrow' }}
+          </div>
+
+        </div>
+
+      </div> 
+      
+      <div class="form-row">
+        <div class="form-group col d-flex justify-content-end">
+          <h4>Total do pedido: 61.80</h4>
+        </div>
+      </div>
+      <br />
+      
+      
+      <h5>Dados de entrega</h5>
+      <hr />
+      
+      <div class="form-row">
+        
+        <div class="col-12 col-md-5 form-group">
+          <input 
+          id="cep-input"
+          placeholder="Digite seu cep"
+          class="form-control {{ cepPrimitivo ? '' : (cepValido ? 'is-valid' : 'is-invalid') }}"
+          type="number"
+          autocomplete="off"
+          required
+          maxlength="8"
+          #inputCep
+          (input)="atualizarCep(inputCep.value)"
+          (change)="atualizarCep(inputCep.value)"
+          >
+          <div *ngIf="cepPrimitivo == false">
+            <div *ngIf="!cepValido">
+              <small class="form-text text-danger">CEP inválido</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group col-12 col-md-3">
+          <input 
+          type="number" 
+          class="form-control {{ numeroPrimitivo ? '' : (numeroValido ? 'is-valid' : 'is-invalid') }}" 
+          placeholder="Número" 
+          autocomplete="off" 
+          minlength="1" 
+          required
+          [value]="numero"
+          #inputNumero
+          (input)="atualizaNumero(inputNumero.value)">
+          
+          <div *ngIf="numeroPrimitivo == false">
+            <div *ngIf="!numeroValido">
+              <small class="form-text text-danger">Número inválido</small>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="form-group col-12 col-md-4">
+          <input
+          type="text" 
+          class="form-control {{ complementoValido ? 'is-valid' : '' }}" 
+          placeholder="Complemento" 
+          autocomplete="off"
+          [value]="complemento"
+          #inputComplemento
+          (input)="atualizaComplemento(inputComplemento.value)"
+          aria-describedby="complementoTooltip"
+          >
+          <small id="complementoTooltip" class="form-text text-dark">Pode ser vazio</small>
+        </div>
+        
+        <div class="form-group col-12 col-md-7">
+          <input 
+          readonly
+          type="text" 
+          class="form-control" 
+          placeholder="Endereço" 
+          disabled
+          required
+          [value]="endereco">
+        </div>
+        
+        <div class="form-group col-12 col-md-2">
+          <input
+          readonly
+          disabled
+          type="text"
+          placeholder="Cidade"
+          [value]="cidade"
+          class="form-control">
+        </div>
+        
+        <div class="form-group col-12 col-md-2">
+          <input
+          readonly
+          disabled
+          type="text"
+          placeholder="Bairro"
+          [value]="bairro"
+          class="form-control">
+        </div>
+        
+        <div class="form-group col-12 col-md-1">
+          <input
+          readonly
+          disabled
+          type="text"
+          placeholder="UF"
+          [value]="uf"
+          class="form-control">
+        </div>
+      </div>
+      
+      
+      <br />
+      
+      <h5>Dados de pagamento</h5>
+      <hr />
+      
+      <div class="form-row">
+        
+        <div class="form-group">
+          <select 
+          class="custom-select {{ formaPagamentoPrimitivo ? '' : (formaPagamentoValido ? 'is-valid' : 'is-invalid') }}"
+          #selectFormaPagamento
+          (change)="atualizaFormaPagamento(selectFormaPagamento.value)">
+          <option value="">Selecione uma opção</option>
+          <option value="dinheiro" selected='{{ formaPagamento == "dinheiro" ? selected : "" }}'>Dinheiro</option>
+          <option value='debito' selected='{{ formaPagamento == "debito" ? selected : "" }}'>Débito</option>
+          <option value='credito' selected='{{ formaPagamento == "credito" ? selected : "" }}'>Crédito</option>
+        </select>
+        
+        <div *ngIf="formaPagamentoPrimitivo == false">
+          <div *ngIf="formaPagamentoValido; else msgFormaPagamentoInvalido">
+          </div>
+          <ng-template #msgFormaPagamentoInvalido>
+            <small class="form-text text-danger">Selecione uma forma de pagamento</small>
+          </ng-template>
+        </div>
+        
+      </div>
+    </div>
     
-          <h5>Sua Compra</h5>
-          <hr />
-          
-          <div class="form-row">
-            <div class="form-group col-md-1">
-              <img src="/assets/ofertas/1/img1.jpg" class="img-fluid">
-            </div>
-            <div class="form-group col-md-6">
-              Super Burger
-              <br />
-              Rodízio de Mini-hambúrger com opção de entrada.
-            </div>
-            
-            <div>
-              <div class="row">
-                <div class="col">
-                  <button type="button" class="btn btn-link">-</button>
-                  1
-                  <button type="button" class="btn btn-link">+</button>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-group col-md-3 d-flex justify-content-end">
-              29.90
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group col-md-1">
-              <img src="/assets/ofertas/4/img1.jpg" class="img-fluid">
-            </div>
-            <div class="form-group col-md-6">
-              Estância das águas
-              <br />
-              Diversão garantida com piscinas, trilhas e muito mais.
-            </div>
-            
-            <div>
-              <div class="row">
-                <div class="col">
-                  <button type="button" class="btn btn-link">-</button>
-                  1
-                  <button type="button" class="btn btn-link">+</button>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-group col-md-3 d-flex justify-content-end">
-              31.90
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group col d-flex justify-content-end">
-              <h4>Total do pedido: 61.80</h4>
-            </div>
-          </div>
-          <br />
-          
-          
-          <h5>Dados de entrega</h5>
-          <hr />
-          
-          <div class="form-row">
-            
-            <div class="col-12 col-md-5 form-group">
-              <input 
-              id="cep-input"
-              placeholder="Digite seu cep"
-              class="form-control {{ cepPrimitivo ? '' : (cepValido ? 'is-valid' : 'is-invalid') }}"
-              type="number"
-              autocomplete="off"
-              required
-              maxlength="8"
-              #inputCep
-              (input)="atualizarCep(inputCep.value)"
-              (change)="atualizarCep(inputCep.value)"
-              >
-              <div *ngIf="cepPrimitivo == false">
-                  <div *ngIf="!cepValido">
-                      <small class="form-text text-danger">CEP inválido</small>
-                  </div>
-                </div>
-            </div>
-            
-            <div class="form-group col-12 col-md-3">
-              <input 
-              type="number" 
-              class="form-control {{ numeroPrimitivo ? '' : (numeroValido ? 'is-valid' : 'is-invalid') }}" 
-              placeholder="Número" 
-              autocomplete="off" 
-              minlength="1" 
-              required
-              [value]="numero"
-              #inputNumero
-              (input)="atualizaNumero(inputNumero.value)">
-              
-              <div *ngIf="numeroPrimitivo == false">
-                <div *ngIf="!numeroValido">
-                    <small class="form-text text-danger">Número inválido</small>
-                </div>
-              </div>
-              
-            </div>
-            
-            <div class="form-group col-12 col-md-4">
-              <input
-              type="text" 
-              class="form-control {{ complementoValido ? 'is-valid' : '' }}" 
-              placeholder="Complemento" 
-              autocomplete="off"
-              [value]="complemento"
-              #inputComplemento
-              (input)="atualizaComplemento(inputComplemento.value)"
-              aria-describedby="complementoTooltip"
-              >
-              <small id="complementoTooltip" class="form-text text-dark">Pode ser vazio</small>
-            </div>
-            
-            <div class="form-group col-12 col-md-7">
-              <input 
-              readonly
-              type="text" 
-              class="form-control" 
-              placeholder="Endereço" 
-              disabled
-              required
-              [value]="endereco">
-            </div>
-            
-            <div class="form-group col-12 col-md-2">
-              <input
-              readonly
-              disabled
-              type="text"
-              placeholder="Cidade"
-              [value]="cidade"
-              class="form-control">
-            </div>
-            
-            <div class="form-group col-12 col-md-2">
-              <input
-              readonly
-              disabled
-              type="text"
-              placeholder="Bairro"
-              [value]="bairro"
-              class="form-control">
-            </div>
-            
-            <div class="form-group col-12 col-md-1">
-              <input
-              readonly
-              disabled
-              type="text"
-              placeholder="UF"
-              [value]="uf"
-              class="form-control">
-            </div>
-          </div>
-          
-          
-          <br />
-          
-          <h5>Dados de pagamento</h5>
-          <hr />
-          
-          <div class="form-row">
-            
-            <div class="form-group">
-              <select 
-              class="custom-select {{ formaPagamentoPrimitivo ? '' : (formaPagamentoValido ? 'is-valid' : 'is-invalid') }}"
-              #selectFormaPagamento
-              (change)="atualizaFormaPagamento(selectFormaPagamento.value)">
-              <option value="">Selecione uma opção</option>
-              <option value="dinheiro" selected='{{ formaPagamento == "dinheiro" ? selected : "" }}'>Dinheiro</option>
-              <option value='debito' selected='{{ formaPagamento == "debito" ? selected : "" }}'>Débito</option>
-              <option value='credito' selected='{{ formaPagamento == "credito" ? selected : "" }}'>Crédito</option>
-            </select>
-            
-            <div *ngIf="formaPagamentoPrimitivo == false">
-              <div *ngIf="formaPagamentoValido; else msgFormaPagamentoInvalido">
-              </div>
-              <ng-template #msgFormaPagamentoInvalido>
-                <small class="form-text text-danger">Selecione uma forma de pagamento</small>
-              </ng-template>
-            </div>
-            
-          </div>
-        </div>
-        
-        <hr />
-        <div class="text-center py-3">
-          <button 
-          type="button" 
-          class="btn btn-success btn-lg font-weight-bold" 
-          [disabled]="formValido()"
-          (click)="confirmarCompra()">Cofirmar compra</button>
-        </div>
-        
-      </form>
-  </div>
-  
-  <div *ngIf="idPedidoCompra !== undefined">
-    <app-ordem-compra-sucesso [idPedido]="idPedidoCompra"></app-ordem-compra-sucesso>
-  </div>
+    <hr />
+    <div class="text-center py-3">
+      <button 
+      type="button" 
+      class="btn btn-success btn-lg font-weight-bold" 
+      [disabled]="formValido()"
+      (click)="confirmarCompra()">Cofirmar compra</button>
+    </div>
+    
+  </form>
+</div>
+
+<div *ngIf="idPedidoCompra !== undefined">
+  <app-ordem-compra-sucesso [idPedido]="idPedidoCompra"></app-ordem-compra-sucesso>
+</div>
 </div>
