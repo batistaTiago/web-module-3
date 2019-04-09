@@ -60,7 +60,7 @@ export class CarrinhoService {
     public getValorTotal(): number {
         let total: number = 0
         for (let item of this.itens) {
-            total = item.valor * item.quantidade
+            total += item.valor * item.quantidade
         }
         return total
     }

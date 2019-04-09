@@ -1,8 +1,19 @@
-/* img {
+img {
     border-radius: 5px;
 }
 
-.container {
-    padding-left: 25px;
-    padding-right: 25px;
-} */
+.bt-text-small {
+    font-size: 0.8em
+}
+
+@media (min-width: 768px) {
+    .bt-auto-height {
+        height: 220px;
+    }
+}
+
+@media (min-width: 992px) {
+    .bt-auto-height {
+        height: 320px
+    }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Oferta } from '../shared/oferta.model';
 import { OfertasService } from '../services/ofertas.service';
@@ -11,7 +11,7 @@ import { CarrinhoService } from '../services/carrinho.service';
   styleUrls: ['./oferta.component.css'],
   providers: [OfertasService]
 })
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit, AfterViewChecked {
   
   private route: ActivatedRoute
 
@@ -59,9 +59,6 @@ export class OfertaComponent implements OnInit {
   }
   
   ngOnInit() {
-    
-
-
     this.route.params.subscribe(
       (p: Params) => {
         this.ofertasService.getOfertaById(p.id).then(
@@ -77,5 +74,16 @@ export class OfertaComponent implements OnInit {
           )
         })
       }
+
+      private primitivo: boolean = true
+
+      ngAfterViewChecked() {
+        if (this.primitivo) {
+          $('.bt-img-galeria:first').click()
+          this.primitivo = false
+        }
+        
+      }
+
     }
     

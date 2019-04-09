@@ -62,7 +62,6 @@ export class OrdemCompraComponent implements OnInit {
   
   ngOnInit() {
     this.itensCarrinho = this.carrinhoService.getItems()
-    console.log(this.itensCarrinho)
   }
 
   private startCepObserver() {
@@ -166,12 +165,9 @@ export class OrdemCompraComponent implements OnInit {
     }
   }
 
-  public adicionarClickado(item: ItemCarrinho) {
-    this.carrinhoService.alterarQuantidade(item, true)
-  }
-
-  public removerClickado(item: ItemCarrinho) {
-    this.carrinhoService.alterarQuantidade(item, false)
+  public alterarQtdClickado(item: ItemCarrinho, add: boolean,  event: Event) {
+    (<HTMLButtonElement>event.target).blur()
+    this.carrinhoService.alterarQuantidade(item, add)
   }
 
   public confirmarCompra() {
