@@ -2,16 +2,6 @@
   <div class="oferta" *ngIf="oferta !== undefined && oferta.imagens !== undefined">
     
     <hr>
-
-    <div class="row mb-3 mt-md-3">
-      <div class="col-12 offset-lg-3 col-lg-6">
-        <div class="img_capa text-center">
-          <img [src]="oferta.imagens[indexImagemSelecionada].url" id="featured-image" class="img-fluid bt-img-round-10"/>
-        </div>
-      </div>
-    </div>
-
-    <hr>
     
     <div class="row">
       <div class="col">
@@ -21,7 +11,17 @@
     </div>
     
     <hr>
-
+    
+    <div class="row mb-3 mt-md-3">
+      <div class="col-12 offset-lg-2 col-lg-8">
+        <div class="img_capa text-center">
+          <img [src]="oferta.imagens[indexImagemSelecionada].url" id="featured-image" class="img-fluid bt-img-round-10"/>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    
     <div class="row px-1 px-md-3">
       <div class="col-6 col-lg-3 mb-3" *ngFor="let imagem of oferta.imagens">
         <img [src]="imagem.url" (click)="imageClicked($event)" class="img-fluid bt-img-round-10 bt-img-galeria" />
@@ -44,7 +44,7 @@
       </div>
     </div>
   </div> 
-
+  
   <hr>
   
   <nav class="detalhes-oferta bg-light pb-2 mb-3 bt-rounded-corners-5">

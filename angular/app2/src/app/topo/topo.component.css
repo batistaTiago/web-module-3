@@ -39,10 +39,6 @@ ul#search-results hr {
     padding: 0px 0px 10px 0px;
 }
 
-.bt-header-height {
-    margin-bottom: 220px
-}
-
  /* sm */
  @media (min-width: 576px) {
 
@@ -64,10 +60,6 @@ ul#search-results hr {
 
  /* md */
  @media (min-width: 768px) {
-
-    .bt-header-height {
-        margin-bottom: 185px
-    }
 
     ul#search-results h5#oferta-titulo {
         font-size: 1.25em;

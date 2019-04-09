@@ -114,10 +114,6 @@ input#cep-input[type="number"] {
     -moz-appearance: textfield;
 }
 
-.bt-header-height {
-    margin-bottom: 220px
-}
-
 .navbar-brand img {
     max-height: 200px;
 }

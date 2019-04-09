@@ -115,14 +115,13 @@ input#cep-input[type="number"] {
     -moz-appearance: textfield;
 }
 
+.bt-header-height {
+    margin-bottom: 210px;
+}
+
 @media (min-width: 576px) {
     .navbar-brand img {
         max-height: 200px;
-    }
-    
-    
-    .bt-header-height {
-        margin-bottom: 260px
     }
     
     .bt-scalable-text {
@@ -132,9 +131,9 @@ input#cep-input[type="number"] {
 
 @media (min-width: 768px) {
     .bt-header-height {
-        margin-bottom: 215px;
+        margin-bottom: 140px;
     }
-    
+
     .menu .nav-item a {
         font-size: 1.15em
     }
