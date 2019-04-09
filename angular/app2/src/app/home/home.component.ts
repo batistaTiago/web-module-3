@@ -42,7 +42,11 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    $('.carousel-item:first').addClass('active')
+    if ($('.carousel-item.active').length) {
+      console.log('há itens ativos, não farei nada')
+    } else {
+      $('.carousel-item:first').addClass('active')
+    }  
   }
 
   public debug() {

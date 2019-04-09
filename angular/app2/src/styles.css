@@ -35,13 +35,12 @@
 }
 
 .bt-price-tag {
-    color: black; 
     margin: 0;
 }
 
 .bt-vertical-border {
-    border-top: 1px solid #777;
-    border-bottom: 1px solid #777;
+    border-top: 1px solid rgba(247, 247, 247, 0.35);
+    border-bottom: 1px solid rgba(247, 247, 247, 0.35);
 }
 
 .bt-default-border {

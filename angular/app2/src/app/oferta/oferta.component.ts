@@ -49,9 +49,6 @@ export class OfertaComponent implements OnInit, AfterViewChecked {
         break
       }
     }
-    
-    // console.log('Itens do carrinho: ' + this.carrinhoService.getItems())
-    console.log(`carrinho de compras (instancia da oferta ${this.oferta.id}): ${this.carrinhoService.getItems()}`)
   }
 
   public adicionarAoCarrinho() {
@@ -64,25 +61,16 @@ export class OfertaComponent implements OnInit, AfterViewChecked {
         this.ofertasService.getOfertaById(p.id).then(
           (oferta: Oferta) => {
             this.oferta = oferta
-            // $('.bt-img-galeria:first').addClass('bt-img-galeria-selecionada')
-
-            // let elements = $('.bt-img-galeria-selecionada')
-            // if (elements.length == 0) {
-            //   $('.bt-img-galeria:first').addClass('bt-img-galeria-selecionada')
-            // }
           }
           )
         })
       }
 
-      private primitivo: boolean = true
-
       ngAfterViewChecked() {
-        if (this.primitivo) {
+        let primitivo = $('.bt-img-galeria-selecionada').length == 0
+        if (primitivo) {
           $('.bt-img-galeria:first').click()
-          this.primitivo = false
         }
-        
       }
 
     }

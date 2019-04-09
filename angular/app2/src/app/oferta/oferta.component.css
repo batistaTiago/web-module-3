@@ -3,7 +3,7 @@
 }
 
 .bt-img-galeria-selecionada {
-    border: 3px solid #aaa;
+    border: 3px solid rgb(247, 247, 247, 0.6);
     cursor: none;
 }
 

@@ -44,7 +44,6 @@ export class TopoComponent implements OnInit {
   public searchBarTextFieldKeyUp(searchQuery: string) {
     console.log('keyup char: ' + searchQuery)
     this.subjectPesquisa.next(searchQuery)
-    console.log(this.subjectPesquisa)
   }
 
   public clearObserverOfertas() {
