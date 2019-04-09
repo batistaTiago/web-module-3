@@ -19,7 +19,7 @@ export class TopoComponent implements OnInit {
 
   constructor(service: OfertasService) {
     this.ofertasService = service
-   }
+  }
 
   ngOnInit() {
     this.ofertasObs = this.subjectPesquisa.pipe(

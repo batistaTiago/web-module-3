@@ -9,8 +9,7 @@ import { AppComponent } from './app.component';
 import { TopoComponent } from './topo/topo.component';
 import { HomeComponent } from './home/home.component';
 import { RodapeComponent } from './rodape/rodape.component';
-import { RestaurantesComponent } from './restaurantes/restaurantes.component';
-import { DiversaoComponent } from './diversao/diversao.component';
+import { CategoriasComponent } from './categorias/categorias.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { OfertaComponent } from './oferta/oferta.component';
@@ -26,8 +25,7 @@ import { CarrinhoService } from './services/carrinho.service';
     TopoComponent,
     HomeComponent,
     RodapeComponent,
-    RestaurantesComponent,
-    DiversaoComponent,
+    CategoriasComponent,
     OfertaComponent,
     ComoUsarComponent,
     OndeFicaComponent,

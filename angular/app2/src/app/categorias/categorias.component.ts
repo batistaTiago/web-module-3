@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Oferta } from '../shared/oferta.model';
 import { OfertasService } from '../services/ofertas.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-diversao',
-  templateUrl: './diversao.component.html',
-  styleUrls: ['./diversao.component.css'],
+  selector: 'app-categorias',
+  templateUrl: './categorias.component.html',
+  styleUrls: ['./categorias.component.css'],
   providers: [OfertasService]
 })
-export class DiversaoComponent implements OnInit {
+export class CategoriasComponent implements OnInit {
 
   public ofertas: Oferta[] = []
 
-  constructor(private ofertaService: OfertasService) { }
+  constructor(private ofertaService: OfertasService, private router: Router) { }
 
   ngOnInit() {
-    this.ofertaService.getOfertasPorCategoria('diversao')
+    this.ofertaService.getOfertasPorCategoria(this.router.url.replace('/', ''))
     .then((ofertas: Oferta[]) => {
       this.ofertas = ofertas
     })
