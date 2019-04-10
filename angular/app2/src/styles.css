@@ -1,3 +1,23 @@
+@font-face {
+    font-family: "Cardinal";
+    src: url("/assets/fontes/Cardinal-Regular.woff")
+}
+
+@font-face {
+    font-family: "Philosopher";
+    src: url("/assets/fontes/Philosopher.woff")
+}
+
+@font-face {
+    font-family: "Cardinal Alternate";
+    src: url("/assets/fontes/Cardinal-Alternate.woff")
+}
+
+@font-face {
+    font-family: "Quesha";
+    src: url("/assets/fontes/Quesha.woff")
+}
+
 #bt-global-bg {
     position: absolute;
     width: 100%;
@@ -137,8 +157,37 @@ input#cep-input[type="number"] {
 }
 
 @media (min-width: 992px) {
-
     .bt-scalable-text {
         font-size: 1.4em
     }
+}
+
+.bt-cardinal-font {
+    font-family: "Cardinal"
+}
+
+.bt-cardinal-alternate-font {
+    font-family: "Cardinal Alternate"
+}
+
+.bt-philosopher-font {
+    font-family: "Philosopher"
+}
+
+.bt-quesha-font {
+    font-family: "Quesha"
+}
+
+.bt-shadowed-element {
+    box-shadow: rgba(0, 0, 0, 0.55) 0px 0px 25px 5px;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.bt-highlighted-text-black {
+    text-shadow: 2px 2px black
+}
+
+.bt-highlighted-text-white {
+    text-shadow: 2px 2px white
 }

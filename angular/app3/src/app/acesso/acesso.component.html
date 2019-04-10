@@ -3,10 +3,14 @@
     <div class="col-sm-6 d-flex justify-content-end">
       <app-banner></app-banner>
     </div>
-
-    <div class="col-sm-6 d-flex justify-content-start">
-    <!-- <app-login></app-login> -->
-    <app-cadastro></app-cadastro>
+    
+    <div *ngIf="cadastro; else login" class="col-sm-6 d-flex justify-content-start">
+      <app-cadastro></app-cadastro>
     </div>  
+    <ng-template #login>
+      <div class="col-sm-6 d-flex justify-content-start">
+        <app-login></app-login>
+      </div>
+    </ng-template>
   </div>
 </div>

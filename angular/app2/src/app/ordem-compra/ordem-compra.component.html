@@ -3,10 +3,10 @@
     <div *ngIf="idPedidoCompra === undefined">
       <form novalidate>
         
-        <h4 class="text-light">Sua Compra</h4>
+        <div class="text-light bt-quesha-font ordem-compra-header">Seu Pedido</div>
         <hr />
         
-        <div class="form-row mb-2 mb-md-4 bg-light py-3 py-md-1 px-lg-5 px-1 bt-rounded-corners-25" *ngFor="let item of itensCarrinho">
+        <div class="form-row mb-2 mb-md-4 bg-light py-3 py-md-1 px-lg-5 px-1 bt-rounded-corners-25 bt-shadowed-element" *ngFor="let item of itensCarrinho">
           
           <div class="row d-flex align-items-center">
             
@@ -19,8 +19,8 @@
 
             
             <div class="col-12 col-md-3 mt-3">
-              <h4 class="text-center"> {{ item.titulo }} </h4>
-              <h5 class="text-justify" id="descricao-item"> {{ item.descricao }} </h5>
+              <h4 class="text-center bt-philosopher-font"> {{ item.titulo }} </h4>
+              <h5 class="text-justify bt-philosopher-font" id="descricao-item"> {{ item.descricao }} </h5>
             </div>
 
 
@@ -31,7 +31,7 @@
                 <button type="button" (click)="alterarQtdClickado(item, false, $event)" class="form-control btn btn-outline-primary">&darr;</button>
               </div>
               
-              <div id="qtd-itens" class="font-weight-bold">
+              <div id="qtd-itens" class="font-weight-bold bt-philosopher-font">
                 {{ item.quantidade }}
               </div>
               
@@ -41,44 +41,30 @@
             </div>
           
             <div class="row col-12 col-md-3" style="padding-left: 0; padding-right: 0">
-                <div class="col-12 d-flex justify-content-center align-items-center">
+                <div class="col-12 d-flex justify-content-center align-items-center bt-philosopher-font">
                   Unitário: &nbsp; {{ item.valor | currency:'BRL':'symbol-narrow' }}
                 </div>
-                <div class="col-12 d-flex justify-content-center align-items-center">
+                <div class="col-12 d-flex justify-content-center align-items-center bt-philosopher-font">
                   Subtotal: &nbsp; <span class="font-weight-bold">{{ item.valor * item.quantidade | currency:'BRL':'symbol-narrow' }}</span>
                 </div>
             </div>
-
-            
-            <!-- <div class="row col-12 col-md-3">
-              <div class="col-6 col-md-12 d-flex justify-content-end align-items-center">
-                Unitário: &nbsp; {{ item.valor | currency:'BRL':'symbol-narrow' }}
-              </div>
-              <div class="col-6 col-md-12 d-flex justify-content-start align-items-center">
-                Subtotal: &nbsp; <span class="font-weight-bold">{{ item.valor * item.quantidade | currency:'BRL':'symbol-narrow' }}</span>
-              </div>
-            </div> -->
-            
-
-
           </div>
-          
         </div> 
         
         <div class="form-row mt-3">
           <div class="form-group col d-flex justify-content-end text-light">
-            <h4>Total do pedido: {{ carrinhoService.getValorTotal() | currency:'BRL':'symbol-narrow' }}</h4>
+            <h4 class="bt-philosopher-font">Total do pedido: {{ carrinhoService.getValorTotal() | currency:'BRL':'symbol-narrow' }}</h4>
           </div>
         </div>
         <br />
         
         
-        <h4 class="text-light">Dados de entrega</h4>
+        <h1 class="text-light bt-quesha-font">Dados de entrega</h1>
         <hr />
         
         <div class="form-row">
           
-          <div class="col-12 col-md-5 form-group">
+          <div class="col-12 col-md-5 form-group bt-philosopher-font">
             <input 
             id="cep-input"
             placeholder="Digite seu cep"
@@ -98,7 +84,7 @@
             </div>
           </div>
           
-          <div class="form-group col-12 col-md-3">
+          <div class="form-group col-12 col-md-3 bt-philosopher-font">
             <input 
             type="number" 
             class="form-control {{ numeroPrimitivo ? '' : (numeroValido ? 'is-valid' : 'is-invalid') }}" 
@@ -118,7 +104,7 @@
             
           </div>
           
-          <div class="form-group col-12 col-md-4">
+          <div class="form-group col-12 col-md-4 bt-philosopher-font">
             <input
             type="text" 
             class="form-control {{ complementoValido ? 'is-valid' : '' }}" 
@@ -132,7 +118,7 @@
             <small id="complementoTooltip" class="form-text text-dark">Pode ser vazio</small>
           </div>
           
-          <div class="form-group col-12 col-md-7">
+          <div class="form-group col-12 col-md-7 bt-philosopher-font">
             <input 
             readonly
             type="text" 
@@ -143,7 +129,7 @@
             [value]="endereco">
           </div>
           
-          <div class="form-group col-12 col-md-2">
+          <div class="form-group col-12 col-md-2 bt-philosopher-font">
             <input
             readonly
             disabled
@@ -153,7 +139,7 @@
             class="form-control">
           </div>
           
-          <div class="form-group col-12 col-md-2">
+          <div class="form-group col-12 col-md-2 bt-philosopher-font">
             <input
             readonly
             disabled
@@ -163,7 +149,7 @@
             class="form-control">
           </div>
           
-          <div class="form-group col-12 col-md-1">
+          <div class="form-group col-12 col-md-1 bt-philosopher-font">
             <input
             readonly
             disabled
@@ -177,13 +163,13 @@
         
         <br />
         
-        <h4 class="text-light">Dados de pagamento</h4>
+        <h1 class="text-light bt-quesha-font">Dados de pagamento</h1>
         
         <hr />
         
         <div class="form-row">
           
-          <div class="form-group">
+          <div class="form-group bt-philosopher-font">
             <select 
             class="custom-select {{ formaPagamentoPrimitivo ? '' : (formaPagamentoValido ? 'is-valid' : 'is-invalid') }}"
             #selectFormaPagamento
@@ -206,7 +192,7 @@
       </div>
       
       <hr />
-      <div class="text-center py-3">
+      <div class="text-center py-3 bt-philosopher-font">
         <button 
         type="button" 
         class="btn btn-success btn-lg font-weight-bold" 

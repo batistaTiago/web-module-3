@@ -10,19 +10,32 @@ import { Router } from '@angular/router';
   providers: [OfertasService]
 })
 export class CategoriasComponent implements OnInit {
-
+  
   public ofertas: Oferta[] = []
-
+  
+  public mainHeader: string = ''
+  public subHeader: string = ''
+  
   constructor(private ofertaService: OfertasService, private router: Router) { }
-
+  
   ngOnInit() {
-    this.ofertaService.getOfertasPorCategoria(this.router.url.replace('/', ''))
-    .then((ofertas: Oferta[]) => {
-      this.ofertas = ofertas
-    })
-    .catch(() => {
-      console.log('erro')
-    })
+    
+    let categoria = this.router.url.replace('/', '')
+    
+    this.ofertaService.getPageHeaders(categoria)
+    .then((headers: any) => {
+        this.mainHeader = headers[0]['main']
+        this.subHeader = headers[0]['sub']
+      })
+      
+    this.ofertaService.getOfertasPorCategoria(categoria)
+      .then((ofertas: Oferta[]) => {
+        this.ofertas = ofertas
+      })
+      .catch(() => {
+        console.log('erro')
+      })
   }
-
+    
 }
+  

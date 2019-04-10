@@ -1,4 +1,18 @@
 {
+  "categorias": {
+    "restaurante": {
+      "main": "Cinema, viagens, diversão muito e mais!",
+      "sub": "Conheça as melhores ofertas para você se alimentar quando quiser:"
+    },
+    "diversao": {
+      "main": "Cinema, viagens, diversão muito e mais!",
+      "sub": "Conheça as melhores ofertas para você se divertir quando quiser:"
+    },
+    "festas": {
+      "main": "Cinema, viagens, diversão muito e mais!",
+      "sub": "Conheça as melhores ofertas para você se divertir quando quiser:"
+    }
+  },
   "ofertas": [
     {
       "id": 1,

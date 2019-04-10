@@ -12,6 +12,17 @@ export class OfertasService {
     constructor(private http: HttpClient) { }
     
     private ofertas: Array<Oferta> = []
+
+    public getPageHeaders(categoria: string): Promise<Oferta[]> {
+        return this.http.get(`${API_URL}/categorias?categoria=${categoria}`)
+        .toPromise()
+        .then
+        (
+            (resposta: any) => {
+                return resposta
+            }
+        )
+    }
     
     public getOfertas(): Promise<Oferta[]> {
         return this.http.get(`${API_URL}/ofertas`)

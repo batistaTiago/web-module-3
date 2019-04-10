@@ -1,12 +1,17 @@
 #bt-global-bg {
     position: absolute;
     width: 100%;
-    background: -moz-radial-gradient(circle, #7db9e8, #0057A6);
-    background: -webkit-radial-gradient(circle, #7db9e8, #0057A6);
-    background: -o-radial-gradient(circle, #7db9e8, #0057A6);
-    background: -ms-radial-gradient(circle, #7db9e8, #0057A6);
-    background: radial-gradient(circle, #7db9e8, #0057A6);
+    background: -moz-radial-gradient(circle, #3487c7, rgb(0, 28, 54));
+    background: -webkit-radial-gradient(circle, #3487c7, rgb(0, 28, 54));
+    background: -o-radial-gradient(circle, #3487c7, rgb(0, 28, 54));
+    background: -ms-radial-gradient(circle, #3487c7, rgb(0, 28, 54));
+    background: radial-gradient(circle, #3487c7, rgb(0, 28, 54));
     background-attachment: fixed;
+}
+
+@font-face {
+    font-family: "Salsabella";
+    src: url("/assets/fontes/salsabella.woff")
 }
 
 .bt-bg-transparent {
@@ -148,3 +153,12 @@ input#cep-input[type="number"] {
         font-size: 1.4em
     }
 }
+
+
+
+
+
+
+
+
+

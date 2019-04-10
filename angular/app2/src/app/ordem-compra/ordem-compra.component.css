@@ -36,3 +36,31 @@
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+
+.ordem-compra-header {
+    font-size: 2.25em;
+}
+
+@media (min-width: 576px) {
+    .ordem-compra-header {
+        font-size: 2.75em;
+    }   
+}
+
+@media (min-width: 768px) {
+    .ordem-compra-header {
+        font-size: 3.25em;
+    }   
+}
+
+@media (min-width: 992px) {
+    .ordem-compra-header {
+        font-size: 3.75em;
+    }   
+}
+
+@media (min-width: 1200px) {
+    .ordem-compra-header {
+
+    }   
+}

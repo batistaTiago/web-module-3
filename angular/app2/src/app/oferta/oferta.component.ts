@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+
+
 import { Oferta } from '../shared/oferta.model';
 import { OfertasService } from '../services/ofertas.service';
 import { CarrinhoService } from '../services/carrinho.service';
@@ -33,8 +35,8 @@ export class OfertaComponent implements OnInit, AfterViewChecked {
   
   public imageClicked(event: Event) {
     $('.bt-img-galeria-selecionada').removeClass('bt-img-galeria-selecionada')
-    
     let url = event.target['attributes']['src'].value
+    let previousIndex = this.indexImagemSelecionada
     for (let att in this.oferta.imagens) {
       if (this.oferta.imagens[att]['url'] == url) {
         
@@ -48,6 +50,13 @@ export class OfertaComponent implements OnInit, AfterViewChecked {
         this.indexImagemSelecionada = parseInt(att)
         break
       }
+    }
+
+    if (previousIndex != this.indexImagemSelecionada) {
+      $('#featured-image').fadeToggle(() => {
+        $('#featured-image').attr('src', this.oferta.imagens[this.indexImagemSelecionada]['url'])
+        $('#featured-image').fadeToggle()
+      })
     }
   }
 

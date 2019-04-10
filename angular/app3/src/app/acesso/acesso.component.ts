@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcessoComponent implements OnInit {
 
+  public cadastro: boolean = false
+
   constructor() { }
 
   ngOnInit() {
