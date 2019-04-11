@@ -45,7 +45,7 @@ export class BannerComponent implements OnInit {
     this.imagens.forEach((image, i) => {
       if (image.estado == 'visivel') {
         image.estado = 'escondido'
-        idx = idx == 4 ? 0 : i+1
+        idx = i == 4 ? 0 : i+1
         return
       }
     })
