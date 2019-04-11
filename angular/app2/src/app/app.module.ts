@@ -1,49 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from "@angular/common";
-import localePt from "@angular/common/locales/pt";
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { RouterModule } from '@angular/router'
+
+import { ROUTES } from './app.routes'
 
 import { AppComponent } from './app.component';
-import { TopoComponent } from './topo/topo.component';
+import { AcessoComponent } from './acesso/acesso.component';
+import { BannerComponent } from './acesso/banner/banner.component';
+import { LoginComponent } from './acesso/login/login.component';
+import { CadastroComponent } from './acesso/cadastro/cadastro.component';
+import { AuthService } from './acesso/services/auth.service';
 import { HomeComponent } from './home/home.component';
-import { RodapeComponent } from './rodape/rodape.component';
-import { CategoriasComponent } from './categorias/categorias.component';
-import { RouterModule } from '@angular/router';
-import { ROUTES } from './app.routes';
-import { OfertaComponent } from './oferta/oferta.component';
-import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
-import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
-import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
-import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
-import { CarrinhoService } from './services/carrinho.service';
+import { PublicacoesComponent } from './home/publicacoes/publicacoes.component';
+import { AuthGuard } from './acesso/services/auth-guard.service';
+import { IncluirPostComponent } from './home/incluir-post/incluir-post.component';
+import { UploadProgressService } from './services/upload-progress.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopoComponent,
+    AcessoComponent,
+    BannerComponent,
+    LoginComponent,
+    CadastroComponent,
     HomeComponent,
-    RodapeComponent,
-    CategoriasComponent,
-    OfertaComponent,
-    ComoUsarComponent,
-    OndeFicaComponent,
-    OrdemCompraComponent,
-    OrdemCompraSucessoComponent
+    PublicacoesComponent,
+    IncluirPostComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(ROUTES),
-    FormsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    { provide:LOCALE_ID, useValue: 'pt' },
-    CarrinhoService
+    AuthService,
+    UploadProgressService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-registerLocaleData(localePt);
